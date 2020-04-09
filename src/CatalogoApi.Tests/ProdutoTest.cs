@@ -16,9 +16,9 @@ namespace CatalogoApi.Tests
             
 
             //Act
-            var produtoController = new ProdutoController(null);
+            //var produtoController = new ProdutoController(null);
 
-            List<ProdutoView> actionResult = (List<ProdutoView>)produtoController.Listar();
+            //<ProdutoView> actionResult = (List<ProdutoView>)produtoController.Listar();
 
             //Assert
             Assert.True(actionResult.Count > 0);

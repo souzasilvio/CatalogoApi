@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CatalogoApi.Dominio;
 using CatalogoApi.Model.View;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,28 +17,31 @@ namespace CatalogoApi.Controllers
     {
 
         private readonly ILogger<ProdutoController> _logger;
+        private readonly ICatalogo Catalogo;
 
-        public ProdutoController(ILogger<ProdutoController> logger)
+        public ProdutoController(ILogger<ProdutoController> logger, ICatalogo catalogo)
         {
             _logger = logger;
+            Catalogo = catalogo;
         }
 
         [AllowAnonymous]
         [HttpGet("listar")]
         public IEnumerable<ProdutoView> Listar()
         {
-            var lista = new List<ProdutoView>();
-            for (int i = 1; i <= 20; i++)
-            {
-                lista.Add(new ProdutoView()
-                {
-                    Id = Guid.NewGuid(),
-                    Nome = $"Produto {i} - date {DateTime.Now}"
+            return Catalogo.ListarProdutos();
+            //var lista = new List<ProdutoView>();
+            //for (int i = 1; i <= 20; i++)
+            //{
+            //    lista.Add(new ProdutoView()
+            //    {
+            //        Id = Guid.NewGuid(),
+            //        Nome = $"Produto {i} - date {DateTime.Now}"
                    
-                });
-            }
+            //    });
+            //}
 
-            return lista;
+            //return lista;
         }
     }
 }
