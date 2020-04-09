@@ -1,0 +1,13 @@
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Dominio\bin\Debug\netcoreapp3.1\CatalogoApi.Dominio.deps.json
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Dominio\bin\Debug\netcoreapp3.1\CatalogoApi.Dominio.dll
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Dominio\bin\Debug\netcoreapp3.1\CatalogoApi.Dominio.pdb
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Dominio\bin\Debug\netcoreapp3.1\CatalogApi.DataAcess.dll
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Dominio\bin\Debug\netcoreapp3.1\CatalogoApi.Model.dll
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Dominio\bin\Debug\netcoreapp3.1\CatalogApi.DataAcess.pdb
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Dominio\bin\Debug\netcoreapp3.1\CatalogoApi.Model.pdb
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Dominio\obj\Debug\netcoreapp3.1\CatalogoApi.Dominio.csprojAssemblyReference.cache
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Dominio\obj\Debug\netcoreapp3.1\CatalogoApi.Dominio.AssemblyInfoInputs.cache
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Dominio\obj\Debug\netcoreapp3.1\CatalogoApi.Dominio.AssemblyInfo.cs
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Dominio\obj\Debug\netcoreapp3.1\CatalogoApi.Dominio.csproj.CopyComplete
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Dominio\obj\Debug\netcoreapp3.1\CatalogoApi.Dominio.dll
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Dominio\obj\Debug\netcoreapp3.1\CatalogoApi.Dominio.pdb

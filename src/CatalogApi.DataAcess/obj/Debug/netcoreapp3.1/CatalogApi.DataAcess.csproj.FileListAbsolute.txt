@@ -1,0 +1,11 @@
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogApi.DataAcess\bin\Debug\netcoreapp3.1\CatalogApi.DataAcess.deps.json
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogApi.DataAcess\bin\Debug\netcoreapp3.1\CatalogApi.DataAcess.dll
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogApi.DataAcess\bin\Debug\netcoreapp3.1\CatalogApi.DataAcess.pdb
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogApi.DataAcess\bin\Debug\netcoreapp3.1\CatalogoApi.Model.dll
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogApi.DataAcess\bin\Debug\netcoreapp3.1\CatalogoApi.Model.pdb
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogApi.DataAcess\obj\Debug\netcoreapp3.1\CatalogApi.DataAcess.csprojAssemblyReference.cache
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogApi.DataAcess\obj\Debug\netcoreapp3.1\CatalogApi.DataAcess.AssemblyInfoInputs.cache
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogApi.DataAcess\obj\Debug\netcoreapp3.1\CatalogApi.DataAcess.AssemblyInfo.cs
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogApi.DataAcess\obj\Debug\netcoreapp3.1\CatalogApi.DataAcess.csproj.CopyComplete
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogApi.DataAcess\obj\Debug\netcoreapp3.1\CatalogApi.DataAcess.dll
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogApi.DataAcess\obj\Debug\netcoreapp3.1\CatalogApi.DataAcess.pdb

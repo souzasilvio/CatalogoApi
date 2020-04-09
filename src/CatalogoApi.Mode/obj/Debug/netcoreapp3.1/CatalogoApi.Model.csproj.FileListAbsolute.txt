@@ -1,0 +1,8 @@
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Mode\bin\Debug\netcoreapp3.1\CatalogoApi.Model.deps.json
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Mode\bin\Debug\netcoreapp3.1\CatalogoApi.Model.dll
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Mode\bin\Debug\netcoreapp3.1\CatalogoApi.Model.pdb
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Mode\obj\Debug\netcoreapp3.1\CatalogoApi.Model.AssemblyInfoInputs.cache
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Mode\obj\Debug\netcoreapp3.1\CatalogoApi.Model.AssemblyInfo.cs
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Mode\obj\Debug\netcoreapp3.1\CatalogoApi.Model.dll
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Mode\obj\Debug\netcoreapp3.1\CatalogoApi.Model.pdb
+D:\Trabalho\Pessoal\Templates\NetCoreServicos\CatalogoApi.Mode\obj\Debug\netcoreapp3.1\CatalogoApi.Model.csprojAssemblyReference.cache
