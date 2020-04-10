@@ -20,3 +20,6 @@
 /src/CatalogoApi.Tests/bin/Debug/netcoreapp3.1
 /src/CatalogoApi.Tests/obj/Debug/netcoreapp3.1
 /src/CatalogoApi.Tests/obj
+/src/Catalogo.Sql/Catalogo.Sql.dbmdl
+/src/Catalogo.SqlCatalogo.Sql.jfm
+/src/.vs/NetCoreServicos/v16/TestStore/0

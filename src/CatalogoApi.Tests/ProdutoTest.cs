@@ -1,5 +1,7 @@
 using CatalogoApi.Controllers;
+using CatalogoApi.Dominio;
 using CatalogoApi.Model.View;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -9,20 +11,23 @@ namespace CatalogoApi.Tests
 {
     public class ProdutoTest
     {
+        ICatalogo catalogo;
+
+        public ProdutoTest()
+        {
+            catalogo = new Mock.CatalogoMock();
+        }
         [Fact]
         public void Lista_Produto_Sucess()
         {
-            //Arrange
-            
-
             //Act
-            //var produtoController = new ProdutoController(null);
+            var produtoController = new ProdutoController(null, catalogo);
 
-            //<ProdutoView> actionResult = (List<ProdutoView>)produtoController.Listar();
+            var lista  = (List<ProdutoView>)produtoController.Listar();
 
             //Assert
-            Assert.True(actionResult.Count > 0);
-            
+            Assert.True(lista.Count > 0);
+
         }
     }
 }
