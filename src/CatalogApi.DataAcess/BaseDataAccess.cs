@@ -59,12 +59,14 @@ namespace CatalogApi.DataAcess
 
         public async Task<List<T>> Listar()
         {
-            using (IDbConnection dbConnection = Connection)
+            try
             {
-                dbConnection.Open();
-                var retorno = dbConnection.GetAll<T>().ToList();
-                dbConnection.Close();
-                return retorno;
+                Connection.Open();
+                return Connection.GetAll<T>().ToList();
+            }
+            finally
+            {
+                Connection.Close();
             }
         }
 

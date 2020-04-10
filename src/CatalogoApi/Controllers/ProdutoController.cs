@@ -32,9 +32,15 @@ namespace CatalogoApi.Controllers
             return Catalogo.ListarProdutos();           
         }
 
+        [AllowAnonymous]
         [HttpPost("inserir")]
-        public IActionResult Inserir([FromQuery]ProdutoView produto)
+        public IActionResult Inserir([FromBody]ProdutoView produto)
         {
+            if (produto.Id == Guid.Empty || string.IsNullOrEmpty(produto.Nome) || produto.Preco <= 0)
+            {
+                return BadRequest("Id, Nome e Preço devem ser informados");
+            }
+            
             Catalogo.Inserir(produto);
             return Ok();
         }

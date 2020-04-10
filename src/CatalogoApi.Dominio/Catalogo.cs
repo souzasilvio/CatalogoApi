@@ -20,7 +20,10 @@ namespace CatalogoApi.Dominio
             {
                 Id = produto.Id,
                 Nome = produto.Nome,
-                Preco = produto.Preco
+                Preco = produto.Preco,
+                DataCriacao = DateTime.Now,
+                DataModificacao = DateTime.Now
+                
             };
 
             produtoRepository.Inserir(prod);
