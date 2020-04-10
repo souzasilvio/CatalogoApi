@@ -9,5 +9,7 @@ namespace CatalogoApi.Model.Db
     public class Produto : BaseDbModel
     {
         public string Nome { get; set; }
+
+        public decimal Preco { get; set; }
     }
 }

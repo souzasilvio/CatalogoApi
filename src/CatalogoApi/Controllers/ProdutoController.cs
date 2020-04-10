@@ -29,19 +29,14 @@ namespace CatalogoApi.Controllers
         [HttpGet("listar")]
         public IEnumerable<ProdutoView> Listar()
         {
-            return Catalogo.ListarProdutos();
-            //var lista = new List<ProdutoView>();
-            //for (int i = 1; i <= 20; i++)
-            //{
-            //    lista.Add(new ProdutoView()
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        Nome = $"Produto {i} - date {DateTime.Now}"
-                   
-            //    });
-            //}
+            return Catalogo.ListarProdutos();           
+        }
 
-            //return lista;
+        [HttpPost("inserir")]
+        public IActionResult Inserir([FromQuery]ProdutoView produto)
+        {
+            Catalogo.Inserir(produto);
+            return Ok();
         }
     }
 }

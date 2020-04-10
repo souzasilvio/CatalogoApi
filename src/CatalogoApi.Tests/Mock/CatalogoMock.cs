@@ -8,6 +8,11 @@ namespace CatalogoApi.Tests.Mock
 {
     public class CatalogoMock : ICatalogo
     {
+        public void Inserir(ProdutoView produto)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<ProdutoView> ListarProdutos()
         {
             var lista = new List<ProdutoView>();

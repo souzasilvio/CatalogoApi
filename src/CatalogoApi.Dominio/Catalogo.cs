@@ -14,6 +14,18 @@ namespace CatalogoApi.Dominio
             produtoRepository = repository; 
         }
 
+        public void Inserir(ProdutoView produto)
+        {
+            var prod = new Produto()
+            {
+                Id = produto.Id,
+                Nome = produto.Nome,
+                Preco = produto.Preco
+            };
+
+            produtoRepository.Inserir(prod);
+        }
+
         public IEnumerable<ProdutoView> ListarProdutos()
         {
             var lista = produtoRepository.Listar().GetAwaiter().GetResult();

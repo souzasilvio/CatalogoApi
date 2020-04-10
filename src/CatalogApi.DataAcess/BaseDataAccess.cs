@@ -39,6 +39,11 @@ namespace CatalogApi.DataAcess
             }
         }
 
+        //internal void Inserir(Produto registro)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
         public int Execute(string query, DynamicParameters parametros)
         {
             try
@@ -63,18 +68,18 @@ namespace CatalogApi.DataAcess
             }
         }
 
-        //public void Inserir(T registro)
-        //{
-        //    try
-        //    {
-        //        Connection.Open();
-        //        Connection.Insert<T>(registro);
-        //    }
-        //    finally
-        //    {
-        //        Connection.Close();
-        //    }
-        //}
+        public void Inserir(T registro)
+        {
+            try
+            {
+                Connection.Open();
+                Connection.Insert<T>(registro);
+            }
+            finally
+            {
+                Connection.Close();
+            }
+        }
 
         ///// <summary>
         ///// Excluir registro
