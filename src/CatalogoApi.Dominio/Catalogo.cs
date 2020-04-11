@@ -35,7 +35,7 @@ namespace CatalogoApi.Dominio
             var result = new List<ProdutoView>();
             foreach (Produto p in lista)
             {
-                result.Add(new ProdutoView() { Id = p.Id, Nome = p.Nome });
+                result.Add(new ProdutoView() { Id = p.Id, Nome = p.Nome, Preco = p.Preco });
             }
             return result;
         }

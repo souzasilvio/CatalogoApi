@@ -40,9 +40,15 @@ namespace CatalogoApi.Controllers
             {
                 return BadRequest("Id, Nome e Preço devem ser informados");
             }
-            
-            Catalogo.Inserir(produto);
-            return Ok();
+            try
+            {
+                Catalogo.Inserir(produto);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
