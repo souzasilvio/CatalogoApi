@@ -15,19 +15,13 @@ namespace AssinaturaDocumento.DataAcess
         {
         }
 
-
-
-        //public async Task<DocumentoDbModel> Obter(Guid Id)
-        //{
-        //    return await base.Obter(Query, Id);
-        //}
+        public void Alterar(Produto registro)
+        {
+            base.Alterar(registro);
+        }
 
         public void Inserir(Produto registro)
         {
-            if (registro.Id == Guid.Empty)
-            {
-                registro.Id = Guid.NewGuid();
-            }
             base.Inserir(registro);
         }
 

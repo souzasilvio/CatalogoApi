@@ -1,4 +1,5 @@
 ﻿using AssinaturaDocumento.DataAcess;
+using AutoMapper;
 using CatalogoApi.Model.Db;
 using CatalogoApi.Model.View;
 using System;
@@ -9,24 +10,30 @@ namespace CatalogoApi.Dominio
     public class Catalogo : ICatalogo
     {
         private readonly IProdutoRepository produtoRepository;
-        public Catalogo(IProdutoRepository repository)
+        private readonly IMapper mapper;
+        public Catalogo(IProdutoRepository repository, IMapper _mapper)
         {
-            produtoRepository = repository; 
+            produtoRepository = repository;
+            mapper = _mapper;
         }
 
         public void Inserir(ProdutoView produto)
         {
-            var prod = new Produto()
+            var registro = mapper.Map<Produto>(produto);
+            if (registro.Id == Guid.Empty)
             {
-                Id = produto.Id,
-                Nome = produto.Nome,
-                Preco = produto.Preco,
-                DataCriacao = DateTime.Now,
-                DataModificacao = DateTime.Now
-                
-            };
+                registro.Id = Guid.NewGuid();
+            }
+            registro.DataCriacao = DateTime.Now;
+            registro.DataModificacao = DateTime.Now;
+            produtoRepository.Inserir(registro);
+        }
 
-            produtoRepository.Inserir(prod);
+        public void Alterar(ProdutoView produto)
+        {
+            var registro = mapper.Map<Produto>(produto);
+            registro.DataModificacao = DateTime.Now;
+            produtoRepository.Alterar(registro);
         }
 
         public IEnumerable<ProdutoView> ListarProdutos()
@@ -35,7 +42,8 @@ namespace CatalogoApi.Dominio
             var result = new List<ProdutoView>();
             foreach (Produto p in lista)
             {
-                result.Add(new ProdutoView() { Id = p.Id, Nome = p.Nome, Preco = p.Preco });
+                var registro = mapper.Map<ProdutoView>(p);
+                result.Add(registro);
             }
             return result;
         }

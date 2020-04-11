@@ -8,6 +8,11 @@ namespace CatalogoApi.Tests.Mock
 {
     public class CatalogoMock : ICatalogo
     {
+        public void Alterar(ProdutoView produto)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Inserir(ProdutoView produto)
         {
             throw new NotImplementedException();

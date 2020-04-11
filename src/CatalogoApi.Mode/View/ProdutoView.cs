@@ -7,5 +7,6 @@ namespace CatalogoApi.Model.View
         public string Nome { get; set; }
 
         public decimal Preco { get; set; }
+        
     }
 }

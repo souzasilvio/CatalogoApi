@@ -7,5 +7,7 @@ namespace CatalogoApi.Dominio
     {
         IEnumerable<ProdutoView> ListarProdutos();
         void Inserir(ProdutoView produto);
+
+        void Alterar(ProdutoView produto);
     }
 }

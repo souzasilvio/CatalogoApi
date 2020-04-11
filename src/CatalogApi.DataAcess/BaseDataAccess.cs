@@ -83,6 +83,19 @@ namespace CatalogApi.DataAcess
             }
         }
 
+        public void Alterar(T registro)
+        {
+            try
+            {
+                Connection.Open();
+                Connection.Update<T>(registro);
+            }
+            finally
+            {
+                Connection.Close();
+            }
+        }
+
         ///// <summary>
         ///// Excluir registro
         ///// </summary>

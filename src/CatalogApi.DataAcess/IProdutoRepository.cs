@@ -9,9 +9,6 @@ namespace AssinaturaDocumento.DataAcess
     {
         Task<List<Produto>> Listar();
         void Inserir(Produto prod);
-        //Task<DocumentoDbModel> Obter(Guid Id);        
-        //void Inserir(DocumentoDbModel contrato);
-        //bool AtualizarIdEnvelope(Guid id, string idEnvelope, int status);
-        //void MarcarEnvelopeCompleto(string idEnvelope);
+        void Alterar(Produto registro);
     }
 }

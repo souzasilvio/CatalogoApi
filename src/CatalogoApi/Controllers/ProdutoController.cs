@@ -36,13 +36,32 @@ namespace CatalogoApi.Controllers
         [HttpPost("inserir")]
         public IActionResult Inserir([FromBody]ProdutoView produto)
         {
-            if (produto.Id == Guid.Empty || string.IsNullOrEmpty(produto.Nome) || produto.Preco <= 0)
+            if (string.IsNullOrEmpty(produto.Nome) || produto.Preco <= 0)
             {
                 return BadRequest("Id, Nome e Preço devem ser informados");
             }
             try
             {
                 Catalogo.Inserir(produto);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost("alterar")]
+        public IActionResult Alterar([FromBody]ProdutoView produto)
+        {
+            if (produto.Id == Guid.Empty)
+            {
+                return BadRequest("Id deve ser informado");
+            }
+            try
+            {
+                Catalogo.Alterar(produto);
                 return Ok();
             }
             catch (Exception ex)

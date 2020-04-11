@@ -17,6 +17,9 @@ using System.Data;
 using System.Data.SqlClient;
 using AssinaturaDocumento.DataAcess;
 using CatalogoApi.Dominio;
+using CatalogoApi.Model.View;
+using CatalogoApi.Model.Db;
+using AutoMapper;
 
 namespace CatalogoApi
 {
@@ -36,13 +39,13 @@ namespace CatalogoApi
                 .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
             services.AddControllers();
 
-            // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Catalogo API", Version = "v1" });
             });
 
-            
+            services.AddAutoMapper(typeof(Catalogo));
+
             services.AddSingleton<IDbConnection>(db => new SqlConnection(Configuration["CatalogoApi:ConnectionStrings:Default"]));
             services.AddSingleton<ICatalogo, Catalogo>();
             services.AddSingleton<IProdutoRepository, ProdutoRepository>();
