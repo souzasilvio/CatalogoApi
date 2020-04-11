@@ -15,26 +15,26 @@ namespace AssinaturaDocumento.DataAcess
         {
         }
 
-        public void Alterar(Produto registro)
-        {
-            base.Alterar(registro);
-        }
+        //public void Alterar(Produto registro)
+        //{
+        //    base.Alterar(registro);
+        //}
 
         public void Inserir(Produto registro)
         {
             base.Inserir(registro);
         }
 
-        //public bool AtualizarIdEnvelope(Guid id, string idEnvelope, int status)
-        //{
-        //    string query = "Update Documento Set IdEnvelope = @IdEnvelope, Status = @Status Where Id = @Id";
-        //    var parametros = new DynamicParameters();
-        //    parametros.Add("@Id", id, DbType.Guid);
-        //    parametros.Add("@IdEnvelope", new Guid(idEnvelope), DbType.Guid);
-        //    parametros.Add("@Status", status, DbType.Int32);
-        //    Execute(query, parametros);
-        //    return true;
-        //}
+        public void Alterar(Produto registro)
+        {
+            string query = "Update Produto Set Nome = @Nome, Preco = @Preco, DataModificacao = @DataModificacao Where Id = @Id";
+            var parametros = new DynamicParameters();
+            parametros.Add("@Id", registro.Id, DbType.Guid);
+            parametros.Add("@Nome", registro.Nome, DbType.String);
+            parametros.Add("@Preco", registro.Preco, DbType.Decimal);
+            parametros.Add("@DataModificacao", registro.DataModificacao, DbType.Date);
+            Execute(query, parametros);
+        }
 
         //public void MarcarEnvelopeCompleto(string idEnvelope)
         //{

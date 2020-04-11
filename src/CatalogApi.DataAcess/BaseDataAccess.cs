@@ -30,19 +30,13 @@ namespace CatalogApi.DataAcess
             try
             {
                 Connection.Open();
-                var retorno = await Connection.QueryFirstOrDefaultAsync<T>(query, parametros);
-                return retorno;
+                return await Connection.QueryFirstOrDefaultAsync<T>(query, parametros);
             }
             finally
             {
                 Connection.Close();
             }
         }
-
-        //internal void Inserir(Produto registro)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         public int Execute(string query, DynamicParameters parametros)
         {
