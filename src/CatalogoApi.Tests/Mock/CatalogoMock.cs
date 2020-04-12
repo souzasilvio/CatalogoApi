@@ -1,24 +1,34 @@
 ﻿using CatalogoApi.Dominio;
 using CatalogoApi.Model.View;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CatalogoApi.Tests.Mock
 {
-    public class CatalogoMock : ICatalogo
+    public class MockCatalogo : Mock<ICatalogo>
     {
-        public void Alterar(ProdutoView produto)
+        public MockCatalogo MockListarProdutos(IEnumerable<ProdutoView> results)
         {
-            throw new NotImplementedException();
+            Setup(x => x.ListarProdutos())
+            .Returns(results);
+            return this;
         }
 
-        public void Inserir(ProdutoView produto)
+        public MockCatalogo MockAlterar(ProdutoView registro)
         {
-            throw new NotImplementedException();
+            Setup(x => x.Alterar(registro));            
+            return this;
         }
 
-        public IEnumerable<ProdutoView> ListarProdutos()
+        public MockCatalogo MockInserir(ProdutoView registro)
+        {
+            Setup(x => x.Inserir(registro));
+            return this;
+        }
+
+        public static IEnumerable<ProdutoView> ProdutosTeste()
         {
             var lista = new List<ProdutoView>();
             lista.Add(new ProdutoView() { Id = Guid.NewGuid(), Nome = "Produto  1" });
