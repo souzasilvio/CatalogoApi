@@ -8,6 +8,9 @@ using CatalogoApi.Model.View;
 namespace CatalogoApi.Dominio.Mapper
 {
 
+    /// <summary>
+    /// Configura os mapeamentos de classes DTO e View
+    /// </summary>
     public class AutoMapping : Profile
     {
         public AutoMapping()

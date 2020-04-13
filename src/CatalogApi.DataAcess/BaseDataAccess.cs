@@ -51,7 +51,7 @@ namespace CatalogApi.DataAcess
             }
         }
 
-        public async Task<List<T>> Listar()
+        public List<T> Listar()
         {
             try
             {

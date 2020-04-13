@@ -38,7 +38,7 @@ namespace CatalogoApi.Dominio
 
         public IEnumerable<ProdutoView> ListarProdutos()
         {
-            var lista = produtoRepository.Listar().GetAwaiter().GetResult();
+            var lista = produtoRepository.Listar();
             var result = new List<ProdutoView>();
             foreach (Produto p in lista)
             {

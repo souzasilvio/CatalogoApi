@@ -7,7 +7,7 @@ namespace AssinaturaDocumento.DataAcess
 {
     public interface IProdutoRepository
     {
-        Task<List<Produto>> Listar();
+        List<Produto> Listar();
         void Inserir(Produto prod);
         void Alterar(Produto registro);
     }

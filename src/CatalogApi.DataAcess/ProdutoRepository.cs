@@ -15,11 +15,6 @@ namespace AssinaturaDocumento.DataAcess
         {
         }
 
-        //public void Alterar(Produto registro)
-        //{
-        //    base.Alterar(registro);
-        //}
-
         public void Inserir(Produto registro)
         {
             base.Inserir(registro);
@@ -35,14 +30,6 @@ namespace AssinaturaDocumento.DataAcess
             parametros.Add("@DataModificacao", registro.DataModificacao, DbType.Date);
             Execute(query, parametros);
         }
-
-        //public void MarcarEnvelopeCompleto(string idEnvelope)
-        //{
-        //    string query = "Update Documento Set Status = @Status Where IdEnvelope = @IdEnvelope";
-        //    var parametros = new DynamicParameters();
-        //    parametros.Add("@IdEnvelope", new Guid(idEnvelope), DbType.Guid);
-        //    parametros.Add("@Status", (int)DocumentoDbModel.StatusCode.AssinadoClientes, DbType.Int32);
-        //    Execute(query, parametros);
-        //}
+      
     }
 }
