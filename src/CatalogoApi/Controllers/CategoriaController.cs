@@ -5,44 +5,44 @@ using System.Threading.Tasks;
 using CatalogoApi.Dominio;
 using CatalogoApi.Model.View;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace CatalogoApi.Controllers
 {
     [Authorize]
-    [ApiController]
     [Route("api/[controller]")]
-    public class ProdutoController : ControllerBase
+    [ApiController]
+    public class CategoriaController : ControllerBase
     {
+        private readonly ILogger<CategoriaController> _logger;
+        private readonly ICategoria dominio;
 
-        private readonly ILogger<ProdutoController> _logger;
-        private readonly ICatalogo Catalogo;
-
-        public ProdutoController(ILogger<ProdutoController> logger, ICatalogo catalogo)
+        public CategoriaController(ILogger<CategoriaController> logger, ICategoria categoria)
         {
             _logger = logger;
-            Catalogo = catalogo;
+            dominio = categoria;
         }
 
-        //[AllowAnonymous]
+        [AllowAnonymous]
         [HttpGet("listar")]
-        public IEnumerable<ProdutoView> Listar()
+        public IEnumerable<CategoriaView> Listar()
         {
-            return Catalogo.ListarProdutos();           
+            return dominio.Listar();
         }
 
-        //[AllowAnonymous]
+        [AllowAnonymous]
         [HttpPost("inserir")]
-        public IActionResult Inserir([FromBody]ProdutoView produto)
+        public IActionResult Inserir([FromBody]CategoriaView registro)
         {
-            if (string.IsNullOrEmpty(produto.Nome) || produto.Preco <= 0)
+            if (string.IsNullOrEmpty(registro.Nome))
             {
-                return BadRequest("Id, Nome e Preço devem ser informados");
+                return BadRequest("Nome deve ser informado");
             }
             try
             {
-                Catalogo.Inserir(produto);
+                dominio.Inserir(registro);
                 return Ok();
             }
             catch (Exception ex)
@@ -51,17 +51,17 @@ namespace CatalogoApi.Controllers
             }
         }
 
-        //[AllowAnonymous]
+        [AllowAnonymous]
         [HttpPost("alterar")]
-        public IActionResult Alterar([FromBody]ProdutoView produto)
+        public IActionResult Alterar([FromBody]CategoriaView registro)
         {
-            if (produto.Id == Guid.Empty)
+            if (registro.Id == 0)
             {
                 return BadRequest("Id deve ser informado");
             }
             try
             {
-                Catalogo.Alterar(produto);
+                dominio.Alterar(registro);
                 return Ok();
             }
             catch (Exception ex)

@@ -29,9 +29,7 @@ namespace CatalogoApi
         public const string AppSettingsDir = "APPSETTINGS_DIR";
 
         public IConfiguration Configuration { get; }
-        //public static ILogger<ConsoleLoggerProvider> AppLogger = null;
-        //public static ILoggerFactory loggerFactory = null;
-
+        
         public Startup(IWebHostEnvironment env)
         {
             var appSettingsFolder = Environment.GetEnvironmentVariable(AppSettingsDir);
@@ -51,15 +49,6 @@ namespace CatalogoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           
-
-            //services.AddLogging(builder => builder
-            //       .AddConsole()
-            //       .AddFilter(level => level >= LogLevel.Trace)
-            //    );
-            //loggerFactory = services.BuildServiceProvider().GetService<ILoggerFactory>();
-            //AppLogger = loggerFactory.CreateLogger<ConsoleLoggerProvider>();
-
             services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme)
                 .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
             services.AddControllers();
@@ -80,9 +69,6 @@ namespace CatalogoApi
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwagger();
-
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-            // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalogo API V1");

@@ -17,6 +17,9 @@ namespace CatalogoApi.Dominio.Mapper
         {
             CreateMap<ProdutoView, Produto>();
             CreateMap<Produto, ProdutoView>();
+
+            CreateMap<CategoriaView, Categoria>();
+            CreateMap<Categoria, CategoriaView>();
         }
     }
 }
