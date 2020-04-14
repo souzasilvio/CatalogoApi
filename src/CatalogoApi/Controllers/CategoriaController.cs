@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 
 namespace CatalogoApi.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriaController : ControllerBase

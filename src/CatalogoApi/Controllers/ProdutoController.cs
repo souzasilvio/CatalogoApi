@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace CatalogoApi.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class ProdutoController : ControllerBase
@@ -25,14 +25,14 @@ namespace CatalogoApi.Controllers
             Catalogo = catalogo;
         }
 
-        //[AllowAnonymous]
+        [AllowAnonymous]
         [HttpGet("listar")]
         public IEnumerable<ProdutoView> Listar()
         {
             return Catalogo.ListarProdutos();           
         }
 
-        //[AllowAnonymous]
+        [AllowAnonymous]
         [HttpPost("inserir")]
         public IActionResult Inserir([FromBody]ProdutoView produto)
         {
@@ -51,7 +51,7 @@ namespace CatalogoApi.Controllers
             }
         }
 
-        //[AllowAnonymous]
+        [AllowAnonymous]
         [HttpPost("alterar")]
         public IActionResult Alterar([FromBody]ProdutoView produto)
         {

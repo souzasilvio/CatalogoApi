@@ -58,10 +58,16 @@ namespace CatalogoApi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Catalogo API", Version = "v1" });
             });
 
+            //Mapper e Banco
             services.AddAutoMapper(typeof(Catalogo));
-
             services.AddSingleton<IDbConnection>(db => new SqlConnection(Configuration["CatalogoApi:ConnectionStrings:Default"]));
+            
+            //Domains
             services.AddSingleton<ICatalogo, Catalogo>();
+            services.AddSingleton<ICategoria, CategoriaDomain>();
+            
+            //Repositories
+            services.AddSingleton<ICategoriaRepository, CategoriaRepository>();
             services.AddSingleton<IProdutoRepository, ProdutoRepository>();
         }
 

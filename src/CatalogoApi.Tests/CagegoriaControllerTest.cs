@@ -12,23 +12,25 @@ using Xunit;
 
 namespace CatalogoApi.Tests
 {
-    public class ProdutoControllerTest
+    public class CategoriaControllerTest
     {
-        private readonly MockProdutoRepository mockProdutoRepository;
+        private readonly MockCategoriaRepository mock;
         private readonly IMapper mapper;
-        private readonly ICatalogo catalogo;
-        private readonly ProdutoController controller;
-
+        private readonly ICategoria dominio;
+        private readonly CategoriaController controller;
+        
         /// <summary>
         /// Setup
         /// </summary>
-        public ProdutoControllerTest()
+        public CategoriaControllerTest()
         {
-            var produto = new Produto() { Id = Guid.NewGuid(), Nome = "Nome 1", Preco = 100 };
-            var lista = new List<Produto>();
-            lista.Add(produto);
+            var registro = new Categoria() { Id = 1, Nome = "Eletronicos"};
+            var registro1 = new Categoria() { Id = 2, Nome = "Som" };
+            var lista = new List<Categoria>();
+            lista.Add(registro);
+            lista.Add(registro1);
 
-            mockProdutoRepository = new MockProdutoRepository()
+            mock = new MockCategoriaRepository()
                 .MockListar(lista);
 
             //auto mapper configuration
@@ -37,15 +39,17 @@ namespace CatalogoApi.Tests
                 cfg.AddProfile(new AutoMapping());
             });
             mapper = mockMapper.CreateMapper();
-            catalogo = new Catalogo(mockProdutoRepository.Object, mapper);            
-            controller = new ProdutoController(null, catalogo);
+
+            dominio = new CategoriaDomain(mock.Object, mapper);            
+            controller = new CategoriaController(null, dominio);
+
         }
 
         [Fact]
         public void Listar_VerificaResultado_Sucess()
         {
             //Act
-            var lista  = (List<ProdutoView>)controller.Listar();
+            var lista  = (List<CategoriaView>)controller.Listar();
 
             //Assert
             Assert.True(lista.Count > 0, "Lista deveria conter valores na coleção.");
@@ -55,8 +59,8 @@ namespace CatalogoApi.Tests
         [Fact]
         public void Inserir_Sucess()
         {
-            //Arrange            
-            var prod = new ProdutoView() { Nome = "Nome 1", Preco = 100 };
+            var controller = new CategoriaController(null, dominio);
+            var prod = new CategoriaView() { Nome = "Categoria 1"};
 
             //Act
             var result = controller.Inserir(prod);
@@ -66,10 +70,10 @@ namespace CatalogoApi.Tests
         }
 
         [Fact]
-        public void Inserir_NomeNaoInformado_Sucess()
+        public void Inserir_ValidaNomeNaoInformado_Sucess()
         {
             //Arrange
-            var prod = new ProdutoView() { Nome = string.Empty, Preco = 100 };
+            var prod = new CategoriaView() { Nome = string.Empty};
 
             //Act
             var result = controller.Inserir(prod);
@@ -82,7 +86,7 @@ namespace CatalogoApi.Tests
         public void Alterar_Sucess()
         {
             //Arrange
-            var prod = new ProdutoView() {Id = Guid.NewGuid(),  Nome = "Nome xxx", Preco = 100 };
+            var prod = new CategoriaView() {Id = 1,  Nome = "Nome xxx"};
 
             //Act
             var result =  controller.Alterar(prod);
@@ -90,14 +94,14 @@ namespace CatalogoApi.Tests
         }
 
         [Fact]
-        public void Alterar_IdNaoInformado_Sucess()
+        public void Alterar_ValidaAlteracaoIdNaoInformado_Sucess()
         {
             //Arrange - Prepara request com id vazio
-            var prod = new ProdutoView() { Id = Guid.Empty, Nome = "xxx", Preco = 100 };
+            var prod = new CategoriaView() { Id = 0, Nome = "xxx" };
 
             //Act
             var result = controller.Alterar(prod);
-            Assert.True(result is BadRequestObjectResult, "Request deveria ser BadResquest");
+            Assert.True(result is BadRequestObjectResult, "Request deveria ser BadRequest");
         }
     }
 }

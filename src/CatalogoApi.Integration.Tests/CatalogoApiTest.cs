@@ -34,7 +34,15 @@ namespace CatalogoApi.Integration.Tests
         [Fact]
         public async Task Produto_Listar_ReturnsOkResponse()
         {
-            var response = await Client.GetAsync("produto/listar");
+            var response = await Client.GetAsync("api/produto/listar");
+            response.EnsureSuccessStatusCode();
+            Assert.True(response.StatusCode == System.Net.HttpStatusCode.OK, "Response deveria ser Ok");
+        }
+
+        [Fact]
+        public async Task Categoria_Listar_ReturnsOkResponse()
+        {
+            var response = await Client.GetAsync("api/categoria/listar");
             response.EnsureSuccessStatusCode();
             Assert.True(response.StatusCode == System.Net.HttpStatusCode.OK, "Response deveria ser Ok");
         }
