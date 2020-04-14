@@ -17,6 +17,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Catalogo.Sql", "Catalogo.Sq
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F9800F9D-7251-4F29-8F0D-3DA3B90A34E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogoApi.Integration.Tests", "CatalogoApi.Integration.Tests\CatalogoApi.Integration.Tests.csproj", "{66B9CAF9-D388-4E5A-BE2F-58F1200DC9D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,12 +51,17 @@ Global
 		{7CC3CE9A-5214-46EB-80A4-5F6347DEF709}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CC3CE9A-5214-46EB-80A4-5F6347DEF709}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7CC3CE9A-5214-46EB-80A4-5F6347DEF709}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{66B9CAF9-D388-4E5A-BE2F-58F1200DC9D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66B9CAF9-D388-4E5A-BE2F-58F1200DC9D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66B9CAF9-D388-4E5A-BE2F-58F1200DC9D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66B9CAF9-D388-4E5A-BE2F-58F1200DC9D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F9D0C5F6-C3CA-4258-85F4-54688D67E3F9} = {F9800F9D-7251-4F29-8F0D-3DA3B90A34E6}
+		{66B9CAF9-D388-4E5A-BE2F-58F1200DC9D8} = {F9800F9D-7251-4F29-8F0D-3DA3B90A34E6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4D72A99E-0801-4CB0-BC3E-B0D30BEB7EDB}

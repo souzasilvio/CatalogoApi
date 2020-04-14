@@ -20,21 +20,46 @@ using CatalogoApi.Dominio;
 using CatalogoApi.Model.View;
 using CatalogoApi.Model.Db;
 using AutoMapper;
+using Microsoft.Extensions.Logging.Console;
 
 namespace CatalogoApi
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        public const string AppSettingsDir = "APPSETTINGS_DIR";
 
         public IConfiguration Configuration { get; }
+        //public static ILogger<ConsoleLoggerProvider> AppLogger = null;
+        //public static ILoggerFactory loggerFactory = null;
+
+        public Startup(IWebHostEnvironment env)
+        {
+            var appSettingsFolder = Environment.GetEnvironmentVariable(AppSettingsDir);
+
+            if (string.IsNullOrWhiteSpace(appSettingsFolder))
+                appSettingsFolder = ".";
+
+            var builder = new ConfigurationBuilder()
+                .AddJsonFile($"{appSettingsFolder}/appsettings.json", reloadOnChange: true, optional: true)
+                .AddJsonFile($"{appSettingsFolder}/appsettings.{env.EnvironmentName}.json", reloadOnChange: true, optional: true)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
+        }
+
+        
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+           
+
+            //services.AddLogging(builder => builder
+            //       .AddConsole()
+            //       .AddFilter(level => level >= LogLevel.Trace)
+            //    );
+            //loggerFactory = services.BuildServiceProvider().GetService<ILoggerFactory>();
+            //AppLogger = loggerFactory.CreateLogger<ConsoleLoggerProvider>();
+
             services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme)
                 .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
             services.AddControllers();

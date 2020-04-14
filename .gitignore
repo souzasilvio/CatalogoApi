@@ -23,3 +23,5 @@
 /src/Catalogo.Sql/Catalogo.Sql.dbmdl
 /src/Catalogo.SqlCatalogo.Sql.jfm
 /src/.vs/NetCoreServicos/v16/TestStore/0
+/src/CatalogoApi.Integration.Tests/bin/Debug/netcoreapp3.1
+/src/CatalogoApi.Integration.Tests/obj
