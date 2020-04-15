@@ -21,6 +21,10 @@ using CatalogoApi.Model.View;
 using CatalogoApi.Model.Db;
 using AutoMapper;
 using Microsoft.Extensions.Logging.Console;
+using Microsoft.Extensions.Configuration.AzureKeyVault;
+using CatalogoApi.Util;
+using Microsoft.Azure.Services.AppAuthentication;
+using Microsoft.Azure.KeyVault;
 
 namespace CatalogoApi
 {
@@ -42,6 +46,27 @@ namespace CatalogoApi
                 .AddJsonFile($"{appSettingsFolder}/appsettings.{env.EnvironmentName}.json", reloadOnChange: true, optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            //Configuração de keyvault
+            var useAzureIdm = Configuration["AzureKeyVault:UseAzureManagedServiceIdentity"];
+            if (useAzureIdm.Equals("true"))
+            {
+                var azureServiceTokenProvider = new AzureServiceTokenProvider();
+                var keyVaultClient = new KeyVaultClient(
+                   new KeyVaultClient.AuthenticationCallback(
+                      azureServiceTokenProvider.KeyVaultTokenCallback));
+                builder.AddAzureKeyVault(
+                   Configuration["AzureKeyVault:KeyVaultEndPoint"], keyVaultClient, new DefaultKeyVaultSecretManager());
+            }
+            else
+            {
+                builder.AddAzureKeyVault(
+                  Configuration["AzureKeyVault:KeyVaultEndPoint"],
+                  Configuration["AzureKeyVault:AppClientId"],
+                  Configuration["AzureKeyVault:AppClientSecret"],
+                  new DefaultKeyVaultSecretManager());
+            }
+            Configuration = builder.Build();
         }
 
         
@@ -60,7 +85,8 @@ namespace CatalogoApi
 
             //Mapper e Banco
             services.AddAutoMapper(typeof(Catalogo));
-            services.AddSingleton<IDbConnection>(db => new SqlConnection(Configuration["CatalogoApi:ConnectionStrings:Default"]));
+
+            services.AddSingleton<IDbConnection>(db => new SqlConnection(ObterConnectionString()));
             
             //Domains
             services.AddSingleton<ICatalogo, Catalogo>();
@@ -97,6 +123,11 @@ namespace CatalogoApi
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private string ObterConnectionString()
+        {
+            return $"Server=tcp:{Configuration[Constantes.DataBase_Address]};Initial Catalog={Configuration[Constantes.DataBase_Name]};Persist Security Info=False;User ID={Configuration[Constantes.DataBase_Login]};Password={Configuration[Constantes.DataBase_Password]};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         }
     }
 }
