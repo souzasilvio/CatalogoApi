@@ -69,6 +69,8 @@ namespace CatalogApi.DataAcess
             try
             {
                 Connection.Open();
+                registro.DataCriacao = DateTime.Now;
+                registro.DataModificacao = DateTime.Now;
                 Connection.Insert<T>(registro);
             }
             finally
@@ -89,22 +91,5 @@ namespace CatalogApi.DataAcess
                 Connection.Close();
             }
         }
-
-        ///// <summary>
-        ///// Excluir registro
-        ///// </summary>
-        ///// <param name="registro">Objeto a excluir</param>
-        //public async void Excluir(T registro)
-        //{
-        //    using (IDbConnection dbConnection = Connection)
-        //    {
-        //        dbConnection.Open();
-        //        dbConnection.Delete<T>(registro);
-        //        dbConnection.Close();
-        //    }
-        //}
-
-
-
     }
 }

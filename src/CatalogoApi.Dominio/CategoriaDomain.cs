@@ -7,28 +7,23 @@ using System.Collections.Generic;
 
 namespace CatalogoApi.Dominio
 {
-    public class CategoriaDomain : ICategoria
+    public class CategoriaDomain : DomainBase<Categoria>, ICategoria
     {
         private readonly ICategoriaRepository categoriaRepository;
-        private readonly IMapper mapper;
-        public CategoriaDomain(ICategoriaRepository repository, IMapper _mapper)
+        public CategoriaDomain(ICategoriaRepository repository, IMapper _mapper) : base(_mapper)
         {
             categoriaRepository = repository;
-            mapper = _mapper;
         }
 
         public void Inserir(CategoriaView registro)
         {
-            var registroCt = mapper.Map<Categoria>(registro);
-            registroCt.DataCriacao = DateTime.Now;
-            registroCt.DataModificacao = DateTime.Now;
+            var registroCt = Mapper.Map<Categoria>(registro);
             categoriaRepository.Inserir(registroCt);
         }
 
         public void Alterar(CategoriaView rg)
         {
-            var registro = mapper.Map<Categoria>(rg);
-            registro.DataModificacao = DateTime.Now;
+            var registro = Mapper.Map<Categoria>(rg);
             categoriaRepository.Alterar(registro);
         }
 
@@ -38,7 +33,7 @@ namespace CatalogoApi.Dominio
             var result = new List<CategoriaView>();
             foreach (Categoria p in lista)
             {
-                var registro = mapper.Map<CategoriaView>(p);
+                var registro = Mapper.Map<CategoriaView>(p);
                 result.Add(registro);
             }
             return result;

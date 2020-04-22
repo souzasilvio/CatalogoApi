@@ -7,32 +7,27 @@ using System.Collections.Generic;
 
 namespace CatalogoApi.Dominio
 {
-    public class Catalogo : ICatalogo
+    public class Catalogo : DomainBase<Produto>, ICatalogo
     {
         private readonly IProdutoRepository produtoRepository;
-        private readonly IMapper mapper;
-        public Catalogo(IProdutoRepository repository, IMapper _mapper)
+        public Catalogo(IProdutoRepository repository, IMapper _mapper) : base(_mapper)
         {
-            produtoRepository = repository;
-            mapper = _mapper;
+            produtoRepository = repository;            
         }
 
         public void Inserir(ProdutoView produto)
         {
-            var registro = mapper.Map<Produto>(produto);
+            var registro = Mapper.Map<Produto>(produto);
             if (registro.Id == Guid.Empty)
             {
                 registro.Id = Guid.NewGuid();
             }
-            registro.DataCriacao = DateTime.Now;
-            registro.DataModificacao = DateTime.Now;
             produtoRepository.Inserir(registro);
         }
 
         public void Alterar(ProdutoView produto)
         {
-            var registro = mapper.Map<Produto>(produto);
-            registro.DataModificacao = DateTime.Now;
+            var registro = Mapper.Map<Produto>(produto);
             produtoRepository.Alterar(registro);
         }
 
@@ -42,7 +37,7 @@ namespace CatalogoApi.Dominio
             var result = new List<ProdutoView>();
             foreach (Produto p in lista)
             {
-                var registro = mapper.Map<ProdutoView>(p);
+                var registro = Mapper.Map<ProdutoView>(p);
                 result.Add(registro);
             }
             return result;
